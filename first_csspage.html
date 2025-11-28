@@ -2,9 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Sudha this is Your First Page</title>
-
-    <!-- CSS inside the same file -->
+    <title>Login - Sudha Webpage</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -30,30 +28,64 @@
 
       .card {
         background-color: white;
-        padding: 15px;
+        padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        max-width: 600px;
+        max-width: 400px;
         margin: 0 auto;
       }
 
       .card h2 {
         margin-top: 0;
-        color: #333;
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 12px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
       }
 
       .btn {
-        display: inline-blue;
+        display: inline-block;
         padding: 8px 16px;
         text-decoration: none;
         border-radius: 4px;
         background-color: #007bff;
         color: white;
         font-size: 14px;
+        border: none;
+        cursor: pointer;
       }
 
       .btn:hover {
         background-color: #0056b3;
+      }
+
+      .link {
+        display: block;
+        margin-top: 10px;
+        font-size: 13px;
+        text-align: center;
+      }
+
+      .link a {
+        text-decoration: none;
+        color: #007bff;
+      }
+
+      .link a:hover {
+        text-decoration: underline;
       }
 
       footer {
@@ -67,15 +99,25 @@
   </head>
   <body>
     <header>
-      <h1>Welcome to Sudha Webpage</h1>
+      <h1>Sudha Webpage - Login</h1>
     </header>
 
     <main>
       <div class="card">
-        <h2>Hello!</h2>
-        <p>Dear Customer, if you are new a user please click on sigin and start your jurnory with us, incase you are aleardy a customer please click on Login.</p>
-        <p>Hey I have created a basic CSS web page and i am using this is to learn GitHub and Git Dont worry.</p>
-        <a class="btn" href="https://www.google.com" target="_blank">Click Me</a>
+        <h2>Login</h2>
+        <form>
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username">
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password">
+
+          <button type="submit" class="btn">Login</button>
+
+          <div class="link">
+            <a href="index.html">Back to Home</a>
+          </div>
+        </form>
       </div>
     </main>
 
