@@ -2,127 +2,120 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Login - Sudha Webpage</title>
+    <title>Login - Employee Career</title>
     <style>
+      /* Global Reset */
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Body Styling (Background and Centering) */
       body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f5f5f5;
+        /* Replace 'employee.jpg' with your actual image file name or path */
+        background-image: url('employee.jpg'); 
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        /* Centers the login box vertically and horizontally */
+        justify-content: center;
+        align-items: center;
       }
 
-      header {
-        background-color: #0932d4;
-        padding: 15px;
+      /* Header Title Styling (Fixed Top Banner) */
+      .title {
+        /* Positioning: fixed to the top edge */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%; 
+        
+        /* Coloring and Styling */
+        color: #FFFFFF; 
+        background-color: rgba(22, 59, 126, 0.85); /* Dark Blue semi-transparent */
+        padding: 15px 0; 
         text-align: center;
+        
+        /* Typography */
+        font-size: 32px; 
+        font-weight: bold;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.4);
       }
 
-      header h1 {
-        color: white;
-        margin: 0;
-      }
-
-      main {
-        padding: 20px;
-      }
-
+      /* Login Box Styling */
       .card {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        max-width: 400px;
-        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.96); /* White semi-transparent */
+        padding: 30px 40px; 
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.4); 
+        width: 380px; /* Increased width */
+        border: 2px solid #163B7E; /* Dark blue border */
+        margin-top: 60px; /* Space to avoid covering the fixed top header */
       }
-
+      
       .card h2 {
-        margin-top: 0;
-        text-align: center;
+          color: #163B7E; 
+          margin-top: 0;
+          margin-bottom: 20px;
+          text-align: center;
       }
 
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 14px;
+      .card label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+          color: #333;
       }
 
-      input[type="text"],
-      input[type="password"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 12px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
+      .card input[type="text"],
+      .card input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 15px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
+      
+      .card button {
+          width: 100%;
+          padding: 12px;
+          background-color: #4CAF50; /* Green button */
+          color: white;
+          border: none;
+          border-radius: 4px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s;
       }
 
-      .btn {
-        display: inline-block;
-        padding: 8px 16px;
-        text-decoration: none;
-        border-radius: 4px;
-        background-color: #007bff;
-        color: white;
-        font-size: 14px;
-        border: none;
-        cursor: pointer;
+      .card button:hover {
+          background-color: #45a049;
       }
-
-      .btn:hover {
-        background-color: #0056b3;
-      }
-
-      .link {
-        display: block;
-        margin-top: 10px;
-        font-size: 13px;
-        text-align: center;
-      }
-
-      .link a {
-        text-decoration: none;
-        color: #007bff;
-      }
-
-      .link a:hover {
-        text-decoration: underline;
-      }
-
-      footer {
-        text-align: center;
-        font-size: 12px;
-        padding: 10px;
-        margin-top: 20px;
-        color: #777;
-      }
+      
     </style>
   </head>
   <body>
-    <header>
-      <h1>Sudha Webpage - Login</h1>
-    </header>
+    <div class="title">
+        Welcome To Employee Career Portal
+    </div>
 
-    <main>
-      <div class="card">
+    <div class="card">
         <h2>Login</h2>
         <form>
-          <label for="username">Username or Email</label>
-          <input type="text" id="username" name="username" placeholder="Enter your username">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
 
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-          <button type="submit" class="btn">Login</button>
-
-          <div class="link">
-            <a href="index.html">Back to Home</a>
-          </div>
+            <button type="submit">Sign In</button>
         </form>
-      </div>
-    </main>
+    </div>
 
-    <footer>
-      &copy; 2025 My Website
-    </footer>
   </body>
 </html>
