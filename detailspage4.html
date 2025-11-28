@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List - Page 4</title>
+    <style>
+        /* (CSS is identical to details.html for consistent styling) */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; flex-direction: column; align-items: center; padding-top: 20px; padding-bottom: 40px; }
+        h2 { color: #163B7E; margin-bottom: 20px; text-align: center; }
+        .list-container { width: 100%; max-width: 1400px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; padding: 20px; }
+        .employee-card { background-color: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-top: 5px solid #163B7E; }
+        
+        /* CSS for Round Profile Picture */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 2px solid #163B7E; 
+        }
+
+        .employee-name-display {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .card-controls { display: flex; justify-content: space-around; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px dashed #ccc; }
+        .card-controls .option { font-size: 13px; font-weight: bold; color: #163B7E; cursor: pointer; transition: color 0.2s; }
+        .card-controls .option:hover { color: #5AA92C; }
+        .detail-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 12px; }
+        .detail-label { font-weight: bold; color: #333; width: 45%; }
+        .detail-value { color: #555; width: 55%; text-align: right; }
+        .bottom-actions { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; padding: 20px; margin-top: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .pagination { display: flex; gap: 5px; }
+        .pagination a, .pagination span { text-decoration: none; color: #163B7E; padding: 6px 10px; border: 1px solid #163B7E; border-radius: 4px; font-weight: bold; transition: background-color 0.3s; }
+        .pagination a:hover { background-color: #e0eaff; }
+        .pagination .active { background-color: #163B7E; color: white; }
+        .back-btn { padding: 10px 20px; background-color: #5AA92C; color: white; border: none; border-radius: 4px; font-size: 16px; text-decoration: none; cursor: pointer; transition: background-color 0.3s; }
+        .back-btn:hover { background-color: #4c8a25; }
+    </style>
+</head>
+<body>
+    <h2>Employee Directory - Page 4</h2>
+
+    <div class="list-container">
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">E2. Jones </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Tech Solutions</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Engineer</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">5 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">New York</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">F2. Brown </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Creative Media</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Designer</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">3 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Los Angeles</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">60 Days</span></div>
+        </div>
+        
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">G2. Williams </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Finance Group</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Analyst</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">7 Years</span></div>
+            <div class="detail-row"><span class="detail-value">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Chicago</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">H2. Brown </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Global Logistics</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Manager</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">10 Years</span></div>
+            <div class="detail-row"><span class="detail-value">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Dallas</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">60 Days</span></div>
+        </div>
+        
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">I2. Jones </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Innovate Labs</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Scientist</span></div>
+            <div class="detail-row"><span class="detail-value">Experience:</span><span class="detail-value">6 Years</span></div>
+            <div class="detail-row"><span class="detail-value">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">San Diego</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">J2. Garcia </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Legal Partners</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Counsel</span></div>
+            <div class="detail-row"><span class="detail-value">Experience:</span><span class="detail-value">8 Years</span></div>
+            <div class="detail-row"><span class="detail-value">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Miami</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">60 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">K2. Martinez </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Health First</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Specialist</span></div>
+            <div class="detail-row"><span class="detail-value">Experience:</span><span class="detail-value">4 Years</span></div>
+            <div class="detail-row"><span class="detail-value">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Houston</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">L2. Lee (P4)</span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Edu-Tech</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Developer</span></div>
+            <div class="detail-row"><span class="detail-value">Experience:</span><span class="detail-value">2 Years</span></div>
+            <div class="detail-row"><span class="detail-value">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Seattle</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+        
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">M2. Wilson </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Retail Chain</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Area Manager</span></div>
+            <div class="detail-row"><span class="detail-value">Experience:</span><span class="detail-value">12 Years</span></div>
+            <div class="detail-row"><span class="detail-value">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Boston</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">60 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">N2. Thomas </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Marketing Pro</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Coordinator</span></div>
+            <div class="detail-row"><span class="detail-value">Experience:</span><span class="detail-value">1 Year</span></div>
+            <div class="detail-row"><span class="detail-value">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Atlanta</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+    </div>
+
+    <div class="bottom-actions">
+        <a href="fisrt_webpage.html" class="back-btn">Back to Login Page</a> 
+
+        <div class="pagination">
+            <a href="detailspage3.html">Previous</a>
+            <a href="details.html">1</a>
+            <a href="detailspage2.html">2</a>
+            <a href="detailspage3.html">3</a>
+            <span class="active">4</span>
+            <a href="#">...</a>
+            <a href="#">Next</a>
+        </div>
+    </div>
+</body>
+</html>

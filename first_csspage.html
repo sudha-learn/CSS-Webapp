@@ -4,118 +4,39 @@
     <meta charset="UTF-8">
     <title>Login - Employee Career</title>
     <style>
-      /* Global Reset */
-      * {
-        box-sizing: border-box;
-      }
-
-      /* Body Styling (Background and Centering) */
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        /* Replace 'employee.jpg' with your actual image file name or path */
-        background-image: url('employee.jpg'); 
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        /* Centers the login box vertically and horizontally */
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* Header Title Styling (Fixed Top Banner) */
-      .title {
-        /* Positioning: fixed to the top edge */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%; 
-        
-        /* Coloring and Styling */
-        color: #FFFFFF; 
-        background-color: rgba(22, 59, 126, 0.85); /* Dark Blue semi-transparent */
-        padding: 15px 0; 
-        text-align: center;
-        
-        /* Typography */
-        font-size: 32px; 
-        font-weight: bold;
-        text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-      }
-
-      /* Login Box Styling */
-      .card {
-        background-color: rgba(255, 255, 255, 0.96); /* White semi-transparent */
-        padding: 30px 40px; 
-        border-radius: 12px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.4); 
-        width: 380px; /* Increased width */
-        border: 2px solid #163B7E; /* Dark blue border */
-        margin-top: 60px; /* Space to avoid covering the fixed top header */
-      }
-      
-      .card h2 {
-          color: #163B7E; 
-          margin-top: 0;
-          margin-bottom: 20px;
-          text-align: center;
-      }
-
-      .card label {
-          display: block;
-          margin-bottom: 5px;
-          font-weight: bold;
-          color: #333;
-      }
-
-      .card input[type="text"],
-      .card input[type="password"] {
-          width: 100%;
-          padding: 10px;
-          margin-bottom: 15px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-      }
-      
-      .card button {
-          width: 100%;
-          padding: 12px;
-          background-color: #4CAF50; /* Green button */
-          color: white;
-          border: none;
-          border-radius: 4px;
-          font-size: 16px;
-          cursor: pointer;
-          transition: background-color 0.3s;
-      }
-
-      .card button:hover {
-          background-color: #45a049;
-      }
-      
+      /* (CSS is the same as before) */
+      * { box-sizing: border-box; }
+      body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-image: url('employee.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+      .title { position: fixed; top: 0; left: 0; width: 100%; color: #FFFFFF; background-color: rgba(22, 59, 126, 0.85); padding: 15px 0; text-align: center; font-size: 32px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+      .card { background-color: rgba(255, 255, 255, 0.96); padding: 30px 40px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.4); width: 380px; border: 2px solid #163B7E; margin-top: 60px; }
+      .card h2 { color: #163B7E; margin-top: 0; margin-bottom: 20px; text-align: center; }
+      .card label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+      .card input[type="text"], .card input[type="password"] { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+      .button-container { display: flex; justify-content: space-between; gap: 10px; margin-top: 15px; }
+      .button-container button { flex: 1; padding: 12px; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
+      .login-btn { background-color: #163B7E; }
+      .login-btn:hover { background-color: #123063; }
+      .register-btn { background-color: #5AA92C; }
+      .register-btn:hover { background-color: #4c8a25; }
     </style>
   </head>
   <body>
-    <div class="title">
-        Welcome To Employee Career Portal
-    </div>
-
+    <div class="title">Employee Career Portal</div>
     <div class="card">
         <h2>Login</h2>
-        <form>
+        
+        <form id="loginForm">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Sign In</button>
-        </form>
+            <input type="text" id="username" name="username"> <label for="password">Password:</label>
+            <input type="password" id="password" name="password"> </form>
+        <div class="button-container">
+            <a href="details.html" style="text-decoration: none; flex: 1;">
+                <button type="button" class="login-btn" style="width: 100%;">Login</button>
+            </a>
+            
+            <button type="button" class="register-btn">Register</button>
+        </div>
+        
     </div>
-
   </body>
 </html>
