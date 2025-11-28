@@ -2,17 +2,44 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My First Web Page</title>
+    <title>Login - Employee Career</title>
+    <style>
+      /* (CSS is the same as before) */
+      * { box-sizing: border-box; }
+      body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-image: url('employee.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+      .title { position: fixed; top: 0; left: 0; width: 100%; color: #FFFFFF; background-color: rgba(22, 59, 126, 0.85); padding: 15px 0; text-align: center; font-size: 32px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+      .card { background-color: rgba(255, 255, 255, 0.96); padding: 30px 40px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.4); width: 380px; border: 2px solid #163B7E; margin-top: 60px; }
+      .card h2 { color: #163B7E; margin-top: 0; margin-bottom: 20px; text-align: center; }
+      .card label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+      .card input[type="text"], .card input[type="password"] { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+      .button-container { display: flex; justify-content: space-between; gap: 10px; margin-top: 15px; }
+      .button-container button { flex: 1; padding: 12px; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
+      .login-btn { background-color: #163B7E; }
+      .login-btn:hover { background-color: #123063; }
+      .register-btn { background-color: #5AA92C; }
+      .register-btn:hover { background-color: #4c8a25; }
+    </style>
   </head>
   <body>
-    <h1>Welcome to my first webpage!</h1>
-    <p>This is a paragraph of text.</p>
+    <div class="title">Employee Career Portal</div>
+    <div class="card">
+        <h2>Login</h2>
+        
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"> 
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+        </form>
 
-    <ul>
-      <li>This is a list item</li>
-      <li>This is another list item</li>
-    </ul>
-
-    <a href="https://www.google.com" target="_blank">Go to Google</a>
+        <div class="button-container">
+            <a href="details.html" style="text-decoration: none; flex: 1;">
+                <button type="button" class="login-btn" style="width: 100%;">Login</button>
+            </a>
+            
+            <button type="button" class="register-btn">Register</button>
+        </div>
+        
+    </div>
   </body>
 </html>

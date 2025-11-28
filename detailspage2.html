@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List - Page 2</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; flex-direction: column; align-items: center; padding-top: 20px; padding-bottom: 40px; }
+        h2 { color: #163B7E; margin-bottom: 20px; text-align: center; }
+        .list-container { width: 100%; max-width: 1400px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; padding: 20px; }
+        .employee-card { background-color: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-top: 5px solid #163B7E; }
+        
+        /* CSS for Round Profile Picture */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 2px solid #163B7E; 
+        }
+
+        .employee-name-display {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .card-controls { display: flex; justify-content: space-around; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px dashed #ccc; }
+        .card-controls .option { font-size: 13px; font-weight: bold; color: #163B7E; cursor: pointer; transition: color 0.2s; }
+        .card-controls .option:hover { color: #5AA92C; }
+        .detail-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 12px; }
+        .detail-label { font-weight: bold; color: #333; width: 45%; }
+        .detail-value { color: #555; width: 55%; text-align: right; }
+        .bottom-actions { width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; padding: 20px; margin-top: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .pagination { display: flex; gap: 5px; }
+        .pagination a, .pagination span { text-decoration: none; color: #163B7E; padding: 6px 10px; border: 1px solid #163B7E; border-radius: 4px; font-weight: bold; transition: background-color 0.3s; }
+        .pagination a:hover { background-color: #e0eaff; }
+        .pagination .active { background-color: #163B7E; color: white; }
+        .back-btn { padding: 10px 20px; background-color: #5AA92C; color: white; border: none; border-radius: 4px; font-size: 16px; text-decoration: none; cursor: pointer; transition: background-color 0.3s; }
+        .back-btn:hover { background-color: #4c8a25; }
+    </style>
+</head>
+<body>
+    <h2>User Details</h2>
+
+    <div class="list-container">
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">K. Lee </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">NextGen Labs</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Research Scientist</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">4 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Boston</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">60 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">L. Jones </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Creative Media</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Lead Animator</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">8 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">London</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+        
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">M. Williams </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Global Finance</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Data Architect</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">10 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Singapore</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">90 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">N. Brown </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Digital Marketing</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">SEO Specialist</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">3 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Remote</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+        
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">O. Davis </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Innovate Labs</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Project Manager</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">7 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Chicago</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">60 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">P. White </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Tech Solutions</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">DevOps Engineer</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">5 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">New York</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">Q. Harris </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Health First</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Pharmacist</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">6 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Houston</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">R. King </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Edu-Tech</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Content Writer</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">1 Year</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Seattle</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+        
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">S. Green </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Retail Chain</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">HR Specialist</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">4 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Boston</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">60 Days</span></div>
+        </div>
+
+        <div class="employee-card">
+            <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
+            <div class="profile-container">
+                <img src="" alt="Profile" class="profile-pic">
+                <span class="employee-name-display">T. Hall </span>
+            </div>
+            <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">Marketing Pro</span></div>
+            <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">Sales Rep</span></div>
+            <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">2 Years</span></div>
+            <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+            <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Atlanta</span></div>
+            <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
+        </div>
+    </div>
+
+    <div class="bottom-actions">
+        <a href="fisrt_webpage.html" class="back-btn">Back to Login Page</a> 
+
+        <div class="pagination">
+            <a href="details.html">Previous</a>
+            <a href="details.html">1</a>
+            <span class="active">2</span>
+            <a href="detailspage3.html">3</a>
+            <a href="detailspage4.html">4</a>
+            <a href="#">...</a>
+            <a href="#">Next</a>
+        </div>
+    </div>
+</body>
+</html>
