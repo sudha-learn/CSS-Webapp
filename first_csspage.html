@@ -18,25 +18,74 @@
       .login-btn:hover { background-color: #123063; }
       .register-btn { background-color: #5AA92C; }
       .register-btn:hover { background-color: #4c8a25; }
+      /* Style for error message */
+      .error-message { color: red; text-align: center; margin-bottom: 15px; font-weight: bold; }
     </style>
   </head>
   <body>
     <div class="title">Employee Career Portal</div>
     <div class="card">
-        <h2>Login</h2>
-        
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username"> <label for="password">Password:</label>
-            <input type="password" id="password" name="password"> </form>
-        <div class="button-container">
-            <a href="details.html" style="text-decoration: none; flex: 1;">
-                <button type="button" class="login-btn" style="width: 100%;">Login</button>
-            </a>
-            
-            <button type="button" class="register-btn">Register</button>
-        </div>
-        
+      <h2>Login</h2>
+
+      <div id="errorMessage" class="error-message" style="display: none;"></div>
+      
+      <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+      </form>
+      
+      <div class="button-container">
+        <button type="button" class="login-btn" onclick="validateLogin()">Login</button>
+        <button type="button" class="register-btn">Register</button>
+      </div>
     </div>
+
+    <script>
+      function validateLogin() {
+        // 1. Get the values from the input fields
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const errorDiv = document.getElementById('errorMessage');
+        let errorMsg = '';
+
+        // 2. Perform the validation checks
+
+        // Check 1: Username must be provided and contain "@gmail.com"
+        if (username === '') {
+          errorMsg = 'Username is required.';
+        } else if (!username.includes('@gmail.com')) {
+          errorMsg = 'Username must be a @gmail.com email address.';
+        }
+        
+        // Check 2: Password must be provided and be at least 8 characters long
+        if (password === '') {
+          // If username is also blank, we'll show the username error first
+          if (errorMsg === '') {
+             errorMsg = 'Password is required.';
+          }
+        } else if (password.length < 8) {
+          errorMsg = 'Password must be at least 8 characters long.';
+        }
+
+        // 3. Handle the result
+        if (errorMsg !== '') {
+          // Validation Failed: Show the error message
+          errorDiv.textContent = errorMsg;
+          errorDiv.style.display = 'block';
+          return false; // Stop the login process
+        } else {
+          // Validation Passed: Clear any old errors and proceed
+          errorDiv.style.display = 'none';
+          
+          // --- SUCCESS ACTION ---
+          // Redirect the user to the details page (as you originally intended)
+          window.location.href = 'details.html';
+          
+          return true; // Login successful
+        }
+      }
+    </script>
   </body>
 </html>
