@@ -4,36 +4,31 @@
     <meta charset="UTF-8">
     <title>Employee List</title>
     <style>
+        /* CSS Styles (Existing) */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: Arial, sans-serif; background-color: #f4f4f4; display: flex; flex-direction: column; align-items: center; padding-top: 20px; padding-bottom: 40px; }
         h2 { color: #163B7E; margin-bottom: 20px; text-align: center; }
+        .success-banner {
+            width: 100%; max-width: 1400px; background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border: 1px solid #c3e6cb; border-radius: 8px; text-align: center; font-weight: bold; display: none; 
+        }
+
+        /* Control Bar Styles */
+        .control-bar {
+            width: 100%; max-width: 1400px; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; margin-bottom: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .search-container { flex-basis: 35%; display: flex; gap: 10px; }
+        .search-container input[type="text"] { padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; flex-grow: 1; }
+        .filter-controls { flex-basis: 30%; display: flex; gap: 15px; justify-content: flex-end; align-items: center; }
+        .profile-section { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 5px 10px; border-radius: 4px; transition: background-color 0.2s; }
+        .profile-section:hover { background-color: #f0f0f0; }
+        .profile-section img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #163B7E; }
+
+        /* Employee List/Card Styles (Existing) */
         .list-container { width: 100%; max-width: 1400px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; padding: 20px; }
         .employee-card { background-color: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-top: 5px solid #163B7E; }
-        
-        /* CSS for Round Profile Picture */
-        .profile-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 5px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .profile-pic {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%; 
-            object-fit: cover;
-            border: 2px solid #163B7E; 
-        }
-
-        .employee-name-display {
-            font-size: 14px;
-            font-weight: bold;
-            color: #333;
-        }
-        
+        .profile-container { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; padding-bottom: 5px; border-bottom: 1px solid #eee; }
+        .profile-pic { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #163B7E; }
+        .employee-name-display { font-size: 14px; font-weight: bold; color: #333; }
         .card-controls { display: flex; justify-content: space-around; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px dashed #ccc; }
         .card-controls .option { font-size: 13px; font-weight: bold; color: #163B7E; cursor: pointer; transition: color 0.2s; }
         .card-controls .option:hover { color: #5AA92C; }
@@ -47,11 +42,119 @@
         .pagination .active { background-color: #163B7E; color: white; }
         .back-btn { padding: 10px 20px; background-color: #5AA92C; color: white; border: none; border-radius: 4px; font-size: 16px; text-decoration: none; cursor: pointer; transition: background-color 0.3s; }
         .back-btn:hover { background-color: #4c8a25; }
+
+        /* --- NEW MODAL STYLES --- */
+        .modal-overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark background */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 400px; 
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .modal-content h3 {
+            color: #163B7E;
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .profile-detail-section {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .profile-detail-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            padding: 3px 0;
+        }
+
+        .profile-label {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .profile-value {
+            color: #555;
+            text-align: right;
+        }
+
+        .logout-btn-modal {
+            width: 100%;
+            padding: 10px;
+            background-color: #CC0000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .logout-btn-modal:hover {
+            background-color: #A00000;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
+    <div id="registrationSuccess" class="success-banner">
+        ✅ User account has been created successfully!
+    </div>
+    
     <h2>User Details</h2>
 
+    <div class="control-bar">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search by Name or Company...">
+            <button class="login-btn" style="background-color: #163B7E; padding: 8px 15px; font-size: 14px;">Search</button>
+        </div>
+
+        <div class="filter-controls">
+            <select style="padding: 8px; border-radius: 4px;">
+                <option value="all">Filter by Position</option>
+                <option value="engineer">Engineer</option>
+                <option value="analyst">Analyst</option>
+                <option value="developer">Developer</option>
+            </select>
+            <select style="padding: 8px; border-radius: 4px;">
+                <option value="all">Sort by Experience</option>
+                <option value="low">Low to High</option>
+                <option value="high">High to Low</option>
+            </select>
+        </div>
+
+        <div class="profile-section" onclick="showMyProfile()">
+            <img src="profile_placeholder.png" alt="Profile" />
+            <span style="font-weight: bold; color: #163B7E;">My Profile</span>
+        </div>
+    </div>
+    
     <div class="list-container">
         <div class="employee-card">
             <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
@@ -66,7 +169,7 @@
             <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">New York</span></div>
             <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
         </div>
-
+        
         <div class="employee-card">
             <div class="card-controls"> <span class="option">UserAdd ➕</span> <span class="option">Chat 💬</span> <span class="option">Block 🚫</span> </div>
             <div class="profile-container">
@@ -192,23 +295,151 @@
             <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">Atlanta</span></div>
             <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">30 Days</span></div>
         </div>
-        </div>
+    </div>
 
     <div class="bottom-actions">
-        <a href="fisrt_webpage.html" class="back-btn">Back to Login Page</a> 
+        <a href="first_csspage.html" class="back-btn">Back to Login Page</a> 
 
         <div class="pagination">
             <a href="#">Previous</a>
             <span class="active">1</span>
-            
             <a href="detailspage2.html">2</a>
             <a href="detailspage3.html">3</a>
             <a href="detailspage4.html">4</a>
-            
             <a href="#">...</a>
             <a href="#">Next</a>
         </div>
     </div>
+    
+    <div id="profileModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content">
+            <h3>My Profile Details</h3>
+            
+            <div id="profileDetailsContent">
+                </div>
 
+            <button class="logout-btn-modal" onclick="logoutUser()">Logout</button>
+        </div>
+    </div>
+    <script>
+        // --- LOGIC FUNCTIONS ---
+
+        // Logic to show the success banner based on URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+        const successBanner = document.getElementById('registrationSuccess');
+
+        if (status === 'created') {
+            successBanner.style.display = 'block';
+            setTimeout(() => {
+                successBanner.style.display = 'none';
+                history.replaceState(null, '', window.location.pathname);
+            }, 5000); 
+        }
+
+        // Function to Render New Users from Local Storage
+        function renderNewUsers() {
+            const listContainer = document.querySelector('.list-container');
+            const storedUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+            storedUsers.forEach(user => {
+                const newCard = document.createElement('div');
+                newCard.className = 'employee-card new-user'; 
+
+                newCard.innerHTML = `
+                    <div class="card-controls"> 
+                        <span class="option">UserAdd ➕</span> 
+                        <span class="option">Chat 💬</span> 
+                        <span class="option">Block 🚫</span> 
+                    </div>
+                    <div class="profile-container">
+                        <img src="user_placeholder.png" alt="Profile" class="profile-pic" style="border-color: #5AA92C;">
+                        <span class="employee-name-display">${user.name}</span>
+                    </div>
+                    <div class="detail-row"><span class="detail-label">Company Name:</span><span class="detail-value">${user.company}</span></div>
+                    <div class="detail-row"><span class="detail-label">Position:</span><span class="detail-value">${user.position}</span></div>
+                    <div class="detail-row"><span class="detail-label">Experience:</span><span class="detail-value">${user.experience}</span></div>
+                    <div class="detail-row"><span class="detail-label">Salary:</span><span class="detail-value">$$$$$</span></div>
+                    <div class="detail-row"><span class="detail-label">Location:</span><span class="detail-value">${user.location}</span></div>
+                    <div class="detail-row"><span class="detail-value">Notice period:</span><span class="detail-value">${user.notice}</span></div>
+                `;
+                
+                listContainer.prepend(newCard); 
+            });
+        }
+
+        // --- NEW MODAL FUNCTIONS ---
+
+        function buildProfileHTML(profile) {
+            // Function to create a detail row
+            const row = (label, value) => `<div class="profile-detail-row"><span class="profile-label">${label}:</span><span class="profile-value">${value}</span></div>`;
+
+            let html = `
+                <div class="profile-detail-section">
+                    ${row("Username", profile.username)}
+                    ${row("Email ID", profile.email)}
+                    ${row("Phone Number", profile.phone)}
+                </div>
+                
+                <div class="profile-detail-section">
+                    ${row("Followers", profile.followers)}
+                    ${row("Following", profile.following)}
+                    ${row("Resume/CV", profile.resume)}
+                </div>
+
+                <div class="profile-detail-section">
+                    ${row("Organization", profile.organization)}
+                    ${row("Education", profile.education)}
+                </div>
+
+                <div class="profile-detail-section">
+                    ${row("Current CTC", profile.currentCtc)}
+                    ${row("Expected CTC", profile.expectedCtc)}
+                    ${row("Notice Period", profile.noticePeriod)}
+                </div>
+            `;
+            return html;
+        }
+
+        function showMyProfile() {
+            const myProfile = {
+                username: "SudarsanV",
+                email: "reddysudarsan200@gmail.com",
+                phone: "+91 8886365127",
+                followers: "125",
+                following: "8",
+                resume: "View Link",
+                organization: "Tata Consultancy Services",
+                education: "B.Tech (2021)",
+                currentCtc: "₹ X,XX,XXX",
+                expectedCtc: "₹ Y,YY,YYY",
+                noticePeriod: "30 Days",
+            };
+
+            // Inject the data into the modal content
+            document.getElementById('profileDetailsContent').innerHTML = buildProfileHTML(myProfile);
+            
+            // Show the modal
+            document.getElementById('profileModal').style.display = 'flex';
+        }
+
+        function closeModal(event) {
+            // Check if the click occurred directly on the overlay (not the content box)
+            if (event.target.id === 'profileModal') {
+                document.getElementById('profileModal').style.display = 'none';
+            }
+        }
+        
+        function logoutUser() {
+            // Clear any user session data (optional, but good practice)
+            // localStorage.removeItem('loggedInUser'); 
+            
+            alert("Logging out...");
+            window.location.href = 'first_csspage.html';
+        }
+
+        // --- EXECUTION ---
+        renderNewUsers();
+    </script>
 </body>
 </html>
