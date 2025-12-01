@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Register - Employee Career</title>
+    <style>
+        /* CSS Styles (Same as before) */
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-image: url('employee.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .title { position: fixed; top: 0; left: 0; width: 100%; color: #FFFFFF; background-color: rgba(22, 59, 126, 0.85); padding: 15px 0; text-align: center; font-size: 32px; font-weight: bold; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+        .card { background-color: rgba(255, 255, 255, 0.96); padding: 30px 40px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.4); width: 450px; border: 2px solid #5AA92C; margin-top: 60px; }
+        .card h2 { color: #5AA92C; margin-top: 0; margin-bottom: 20px; text-align: center; }
+        .card label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+        .card input[type="text"], .card input[type="password"], .card input[type="email"] { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+        .button-container { display: flex; justify-content: space-between; gap: 10px; margin-top: 20px; }
+        .button-container button { flex: 1; padding: 12px; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
+        .submit-btn { background-color: #5AA92C; }
+        .submit-btn:hover { background-color: #4c8a25; }
+        .back-btn { background-color: #777; }
+        .back-btn:hover { background-color: #555; }
+        .error-message { color: red; text-align: center; margin-bottom: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="title">Employee Career Portal</div>
+    <div class="card">
+        <h2>Register New Account</h2>
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <form id="registrationForm">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="email">Email (Username - Must be @gmail.com):</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="newPassword">Password (Minimum 8 characters):</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </form>
+        
+        <div class="button-container">
+            <button type="button" class="submit-btn" onclick="validateRegistration()">Create Account</button>
+            <button type="button" class="back-btn" onclick="window.location.href='first_csspage.html'">Back to Login</button>
+        </div>
+    </div>
+
+    <script>
+        function validateRegistration() {
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorDiv = document.getElementById('errorMessage');
+            let errorMsg = '';
+
+            // Validation checks
+            if (!fullName || !email || !newPassword || !confirmPassword) {
+                errorMsg = 'All fields must be filled.';
+            } else if (!email.includes('@gmail.com')) {
+                errorMsg = 'Email must be a @gmail.com address.';
+            } else if (newPassword.length < 8) {
+                errorMsg = 'Password must be at least 8 characters long.';
+            } else if (newPassword !== confirmPassword) {
+                errorMsg = 'Passwords do not match.';
+            }
+
+            if (errorMsg) {
+                errorDiv.textContent = errorMsg;
+                errorDiv.style.display = 'block';
+                return false;
+            } else {
+                errorDiv.style.display = 'none';
+                alert('User Account has been created successfully!');
+                
+                // Redirect to details.html with a query parameter
+                window.location.href = 'details.html?status=created';
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
